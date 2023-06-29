@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${titulo}"></title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card mt-5">
+                <div class="card-header text-center" th:text="${titulo}"> </div>
+                <div class="card-body">
+                    <form action="">
+                        <div class="row form-group">
+                            <label class="col md-3">Nombre</label>
+                            <input type="text" class="form-control col-md-8" th:placeholder="Nombre">
+                        </div>
+                        <div class="row form-group">
+                            <label class="col md-3">Apellidos</label>
+                            <input type="text" class="form-control col-md-8" th:placeholder="Apellidos">
+                        </div>
+                        <div class="row form-group">
+                            <label class="col md-3">Edad</label>
+                            <input type="text" class="form-control col-md-8" th:placeholder="Edad">
+                        </div>
+                        <div class="row form-group">
+                            <label class="col md-3">Curso</label>
+                            <input type="text" class="form-control col-md-8" th:placeholder="Curso">
+                        </div>
+                        <buton type="submit" class="col-md-8 btn btn-success">Guardar</buton>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
