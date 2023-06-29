@@ -24,14 +24,14 @@ public class Estudiante implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
-    @NotBlank
+    @NotBlank(message = "Indique el nombre")
     private String nombre;
-    @NotBlank
+    @NotBlank(message = "Indique los apellidos")
     private String apellidos;
     @NotNull
     @Min(value = 1)
     private String edad;
-    @NotEmpty
+    @NotBlank(message = "Indique el nombre del curso")
     private String curso;
 
     public Long getId() {
