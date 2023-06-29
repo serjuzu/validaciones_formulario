@@ -2,7 +2,12 @@ package ilerna.sergio.validaciones_formulario.entity;
 
 
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 /**
@@ -19,9 +24,14 @@ public class Estudiante implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
+    @NotBlank
     private String nombre;
+    @NotBlank
     private String apellidos;
+    @NotNull
+    @Min(value = 1)
     private String edad;
+    @NotEmpty
     private String curso;
 
     public Long getId() {
