@@ -19,9 +19,9 @@
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
                 </div>
             </div>
-
+            <div class="alert alert-success mt-2" th:if="${success != null}" th:text="${success}"></div>
             <!-- Comienza la tarjeta donde pongo el formulario -->
-            <div class="card mt-5">
+            <div class="card mt-3 mb-5">
                 <div class="card-header text-center"> Formulario de alumnos</div>
                 <div class="card-body">
                     <!-- Comienza el formulario || th:errorclass >> clases CSS que se aplicarán en caso de que haya errores de validación-->
@@ -30,7 +30,7 @@
                             <label class="col-md-3">Nombre</label>
                             <input type="text" class="form-control col" th:errorclass="'form-control is-invalid'"
                                    placeholder="Nombre" th:field="*{nombre}">
-                            <small class="form-text" th:if="${#fields.hasErrors('nombre')}"
+                            <small class="form-text text-danger" th:if="${#fields.hasErrors('nombre')}"
                                    th:errors="*{nombre}"></small>
                         </div>
                         <div class="row form-group mt-2">
@@ -39,7 +39,6 @@
                                    placeholder="Apellidos" th:field="*{apellidos}">
                             <small class="form-text text-danger" th:if="${#fields.hasErrors('apellidos')}"
                                    th:errors="*{apellidos}"></small>
-
                         </div>
                         <div class="row form-group mt-2">
                             <label class="col-md-3">Edad</label>
@@ -47,7 +46,6 @@
                                    placeholder="Edad" th:field="*{edad}">
                             <small class="form-text text-danger" th:if="${#fields.hasErrors('edad')}"
                                    th:errors="*{edad}"></small>
-
                         </div>
                         <div class="row form-group mt-2">
                             <label class="col-md-3">Curso</label>
@@ -55,8 +53,16 @@
                                    placeholder="Curso" th:field="*{curso}">
                             <small class="form-text text-danger" th:if="${#fields.hasErrors('curso')}"
                                    th:errors="*{curso}"></small>
-
                         </div>
+
+                        <div class="row form-group mt-2">
+                            <label class="col-md-3">Fecha de ingreso</label>
+                            <input type="date" class="form-control col" th:errorclass="'form-control is-invalid'"
+                                   th:field="*{fechaIngreso}">
+                            <small class="form-text text-danger" th:if="${#fields.hasErrors('fechaIngreso')}"
+                                   th:errors="*{fechaIngreso}"></small>
+                        </div>
+
                         <div class="text-center mt-5">
                             <button type="submit" class="col-4 offset-3 btn btn-success">Guardar</button>
                         </div>
@@ -64,6 +70,7 @@
                     </form>
                 </div>
             </div>
+            <a th:href="@{/list}" class="mt-5"><button class="btn btn-success">Listado de estudiantes</button></a>
         </div>
     </div>
 </div>

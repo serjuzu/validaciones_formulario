@@ -5,9 +5,11 @@ import ilerna.sergio.validaciones_formulario.entity.Estudiante;
 import ilerna.sergio.validaciones_formulario.service.IEstudianteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import java.util.Map;
@@ -29,15 +31,19 @@ public class FormController {
         return "form";
     }
     @PostMapping("/")
-    public String guardar(@Valid  Estudiante estudiante, BindingResult result){
+    public String guardar(@Valid  Estudiante estudiante, BindingResult result, RedirectAttributes flash){
         if (result.hasErrors()){
             return "form";
         }
         estudianteService.guardar(estudiante);
-        return "redirect:/list";
+        flash.addFlashAttribute("success", "Estudiante guardado con éxito");
+        return "redirect:/";
     }
     @GetMapping("/list")
-    public String list(){
+    public String list(Model model){
+        model.addAttribute("estudiantes", estudianteService.listAllEstudents());
+        model.addAttribute("titulo", "Listado de estudiantes");
+        model.addAttribute("encabezado", "Tabla de estudiantes");
         return "list";
     }
 

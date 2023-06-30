@@ -3,12 +3,14 @@ package ilerna.sergio.validaciones_formulario.entity;
 
 
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * Autor:sjulvez
@@ -29,10 +31,16 @@ public class Estudiante implements Serializable {
     @NotBlank
     private String apellidos;
     @NotNull
-    @Min(value = 1)
+    @Min(value = 16)
     private String edad;
     @NotBlank
     private String curso;
+
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    @NotNull
+    @Column(name = "fecha_ingreso")
+    private Date fechaIngreso;
 
     public Long getId() {
         return id;
@@ -74,14 +82,23 @@ public class Estudiante implements Serializable {
         this.curso = curso;
     }
 
+    public Date getFechaIngreso() {
+        return fechaIngreso;
+    }
+
+    public void setFechaIngreso(Date fechaIngreso) {
+        this.fechaIngreso = fechaIngreso;
+    }
+
     public Estudiante() {
     }
 
-    public Estudiante(Long id, String nombre, String apellidos, String edad, String curso) {
+    public Estudiante(Long id, String nombre, String apellidos, String edad, String curso, Date fechaIngreso) {
         this.id = id;
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.edad = edad;
         this.curso = curso;
+        this.fechaIngreso = fechaIngreso;
     }
 }
