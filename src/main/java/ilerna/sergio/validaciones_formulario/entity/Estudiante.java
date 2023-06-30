@@ -2,7 +2,6 @@ package ilerna.sergio.validaciones_formulario.entity;
 
 
 
-import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
