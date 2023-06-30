@@ -4,4 +4,4 @@ Requiere crear una base de datos: estudiantes
 
 - Selector de fechas
 - Validación de formularios
-- -Mensajes flash
+- Mensajes flash
